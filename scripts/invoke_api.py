@@ -4,7 +4,7 @@ import sys
 
 # Configuration
 # Replace with your actual API Gateway URL after deployment
-API_URL = "https://<API_ID>.execute-api.<AWS_REGION>.amazonaws.com/Prod/predict"
+API_URL = "https://w46dk2gs55.execute-api.eu-north-1.amazonaws.com/Prod/predict/"
 
 # Sample data (matches the shape expected by the model)
 # Example: [Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]

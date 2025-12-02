@@ -8,7 +8,7 @@ on:
 env:
   AWS_REGION: eu-north-1                   # e.g., us-east-1
   ECR_REPOSITORY: diabetes-prediction-repo            # e.g., diabetes-prediction-repo
-  LAMBDA_FUNCTION_NAME: diabetes-prediction-function   # e.g., diabetes-prediction-function
+  LAMBDA_FUNCTION_NAME: diabetes-stack-DiabetesPredictionFunction-6ECzjI4jPaDb   # e.g., diabetes-prediction-function
 
 jobs:
   deploy:
