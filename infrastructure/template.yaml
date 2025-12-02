@@ -15,8 +15,11 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       PackageType: Image
+      ImageUri: 793273043890.dkr.ecr.eu-north-1.amazonaws.com/diabetes-prediction-repo:latest
       Architectures:
         - x86_64
+      Policies:
+        - AmazonEC2ContainerRegistryReadOnly
       Events:
         PredictionApi:
           Type: Api
