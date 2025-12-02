@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Diabetes Prediction Serverless API
+  
+  SAM Template for deploying a Scikit-learn model on AWS Lambda using Docker.
+
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 1024 # Adjust based on model size
+
+Resources:
+  DiabetesPredictionFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      PackageType: Image
+      Architectures:
+        - x86_64
+      Events:
+        PredictionApi:
+          Type: Api
+          Properties:
+            Path: /predict
+            Method: post
+    Metadata:
+      Dockerfile: Dockerfile
+      DockerContext: ./deploy
+      DockerTag: latest
+
+Outputs:
+  PredictionApi:
+    Description: "API Gateway endpoint URL for Prod stage for Diabetes Prediction function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/predict/"
+  DiabetesPredictionFunction:
+    Description: "Diabetes Prediction Lambda Function ARN"
+    Value: !GetAtt DiabetesPredictionFunction.Arn
+  DiabetesPredictionFunctionIamRole:
+    Description: "Implicit IAM Role created for Diabetes Prediction function"
+    Value: !GetAtt DiabetesPredictionFunctionRole.Arn
